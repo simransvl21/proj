@@ -1,0 +1,95 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body background="bg.jpg">
+<form>
+<p id="demo1" align="center" style="color:white;font-size:20px;"></p>
+<p id="demo2" align="center" style="color:white;font-size:20px;"></p>
+<p id="demo3" align="center" style="color:white;font-size:20px;"></p>
+<p id="demo4" align="center" style="color:white;font-size:20px;"></p>
+<p id="demo5" align="center" style="color:white;font-size:20px;"></p>
+<p id="demo6" align="center" style="color:white;font-size:20px;"></p>
+<font color="white">Title of Blog:</font><br>
+<input type="text" name="title" id="titl" value=""  size="90"><br>
+<font color="white">Image URL:</font><br>
+<input type="text" id="ur" value="" size="90"><br>
+<font color="white">Blog Paragraph1:</font><br>
+<textarea rows="5" cols="100" id="p1" value=""></textarea><br>
+<font color="white">Blog Paragraph2:</font><br>
+<textarea rows="5" cols="100" id="p2" value="" required></textarea><br>
+<font color="white">Blog Paragraph3:</font><br>
+<textarea rows="5" cols="100" id="p3" value="" required></textarea><br>
+<font color="white">Blog Author Name:</font><br>
+<input type="text" id="author" value="" size="90"><br>
+<input type="button" value="submit" onclick="validate()">
+<script>
+function validate()
+{
+ var tpat=/[a-zA-Z0-9]/;
+ var at=/[a-zA-Z]/;
+ var str=document.getElementById("titl").value;
+ var ul=document.getElementById("ur").value;
+ var aut=document.getElementById("author").value;
+ var pp1=document.getElementById("p1").value;
+ var pp2=document.getElementById("p2").value;
+ var pp3=document.getElementById("p3").value;
+ if(!str.match(tpat))
+ {
+   alert("Invalid Title!!!");
+   document.getElementById("titl").value="";
+ }
+ /* else if (!ul.match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i")) {
+  alert( "Invalid URL"); 
+ }*/
+ else if(pp1=="")
+ {
+  alert("Enter Blog Paragraph1 !!!");
+  document.getElementById("p1").value="";
+ }
+ else if(pp2=="")
+ {
+  alert("Enter Blog Paragraph2 !!!");
+  document.getElementById("p2").value="";
+ }
+ else if(pp3=="")
+ {
+  alert("Enter Blog Paragraph3 !!!");
+  document.getElementById("p3").value="";
+ }
+ else if(!aut.match(at))
+ {
+   alert("Invalid Author Name!!!");
+   document.getElementById("author").value="";
+ }
+ else
+ {
+  data();
+ }
+}
+function data()
+{
+var myObj, x;
+myObj = { "t":document.getElementById("titl").value, 
+	  "imgurl":document.getElementById("ur").value, 
+	  "bp1":document.getElementById("p1").value,
+	  "bp2":document.getElementById("p2").value,
+	  "bp3":document.getElementById("p3").value,
+	  "aut":document.getElementById("author").value };
+x = myObj.t;
+var im=myObj.imgurl;
+var b1=myObj.bp1;
+var b2=myObj.bp2;
+var b3=myObj.bp3;
+var a=myObj.aut;
+document.getElementById("demo1").innerHTML = "TITLE OF BLOG:" + x;
+document.getElementById("demo2").innerHTML = "IMAGE URL:" + im;
+document.getElementById("demo3").innerHTML = "BLOG PARAGRAPH1:" + b1;
+document.getElementById("demo4").innerHTML = "BLOG PARAGRAPH2:" + b2;
+document.getElementById("demo5").innerHTML = "BLOG PARAGRAPH3:" + b3;
+document.getElementById("demo6").innerHTML = "AUTHOR NAME:" + a;
+}
+</script>
+</form>
+</body>
+</html>
